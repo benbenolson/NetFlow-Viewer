@@ -7,7 +7,15 @@
 #
 
 require 'socket'
+require 'csv'
 require 'getoptlong'
+
+class String
+  def numeric?
+    return true if self =~ /^\d+$/
+    true if Float(self) rescue false
+  end
+end
 
 opts = GetoptLong.new(
   ['--help', '-h', GetoptLong::NO_ARGUMENT],
@@ -49,8 +57,19 @@ host = ARGV.shift
 
 client = TCPSocket.new host, port
 
-while snippet = client.gets
-  puts snippet
+schema = nil
+
+while raw_entry = client.gets
+  entry = raw_entry.parse_csv
+
+  if !entry[0].numeric?
+    schema = entry
+  else
+    # Insert entry into SQL database here
+    schema.zip(entry).each do |label, datum|
+      printf("%s: %s\n", label, datum)
+    end
+  end
 end
 
 client.close

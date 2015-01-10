@@ -2,7 +2,6 @@
 # NetFlow streamer, originally written by Ben Brock.
 #
 # TODO 
-# Reorder CSV entries to NetFlow order
 # Support multiple clients
 # Add encryption
 #

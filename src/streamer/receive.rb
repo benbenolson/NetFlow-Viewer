@@ -2,7 +2,6 @@
 # NetFlow stream receiver, originally written by Ben Brock.
 #
 # TODO
-# Improve efficiency by only checking schema when new.
 # Store some things as integers, doubles instead of strings.
 # Add encryption
 #
@@ -19,7 +18,7 @@ class String
   end
 end
 
-def insert_entry(db, schema, entry)
+def new_schema(db, schema)
   db.create_table?(:netflow) do
     primary_key :id
   end
@@ -34,9 +33,21 @@ def insert_entry(db, schema, entry)
       end
     end
   end
+end
+
+def insert_entry(db, schema, entry)
+  if schema == nil
+    puts "Attempting to insert entry with NULL schema."
+    puts "You are wrong."
+    exit 0
+  end
+
+  schema.map! {|column| column.intern}
 
   new_entry = Hash[schema.zip(entry)]
   db[:netflow].insert(new_entry)
+
+  puts new_entry
 end
 
 opts = GetoptLong.new(
@@ -81,13 +92,14 @@ client = TCPSocket.new host, port
 
 schema = nil
 
-db = Sequel.mysql('bbrock4_streamer', :user => 'bbrock4', :password => 'hehehe', :host => 'mysql.utk.edu')
+db = Sequel.mysql('bbrock4_streamer', :user => 'bbrock4', :password => 'ZtLzUv5s', :host => 'mysql.utk.edu')
 
 while raw_entry = client.gets
   entry = raw_entry.parse_csv
 
   if !entry[0].numeric?
     schema = entry
+    new_schema(db, schema)
   else
     insert_entry(db, schema, entry)
   end

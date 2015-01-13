@@ -3,6 +3,7 @@
 #
 # TODO
 # Improve efficiency by only checking schema when new.
+# Store some things as integers, doubles instead of strings.
 # Add encryption
 #
 

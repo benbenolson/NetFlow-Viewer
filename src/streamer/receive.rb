@@ -92,7 +92,7 @@ client = TCPSocket.new host, port
 
 schema = nil
 
-db = Sequel.mysql('bbrock4_streamer', :user => 'bbrock4', :password => 'ZtLzUv5s', :host => 'mysql.utk.edu')
+db = Sequel.mysql('db_netflow', :user => 'root', :password => 'VhbRgEALLqVP ', :host => 'localhost')
 
 while raw_entry = client.gets
   entry = raw_entry.parse_csv

@@ -72,7 +72,7 @@ CSV.foreach(file) do |entry|
     csv_elapsed = entry[0].to_f - csv_init_time
 
     if csv_elapsed > elapsed
-      sleep csv_elapsed - elapsed
+      sleep [csv_elapsed - elapsed, 0].max
     end
   end
   client.puts entry.to_csv

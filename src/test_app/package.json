@@ -1,0 +1,21 @@
+{
+  "name": "test_app",
+  "version": "0.0.0",
+  "description": "Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ampersand-router": "^1.0.7",
+    "ampersand-view": "^7.2.0",
+    "ampersand-view-switcher": "^2.0.0",
+    "d3": "^3.5.5",
+    "domready": "^1.0.7",
+    "getconfig": "^1.0.0",
+    "hapi": "^8.2.0",
+    "moonboots_hapi": "^4.0.2"
+  }
+}

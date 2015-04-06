@@ -6,7 +6,6 @@ var Router = require ('./router');
 window.app = {
   init: function () {
     console.log ('In app.init');
-    //console.log (d3.version);
 
     var self = this;
     domready (function () {

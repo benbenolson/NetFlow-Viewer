@@ -3,9 +3,6 @@ var ViewSwitcher = require ('ampersand-view-switcher');
 var templates = require ('../templates')
 
 module.exports = View.extend ({
-  //template: '<body><h3>NetFlow Viewer</h3><main role="page-container"></main></body>',
-  //template: '<body><h3>NetFlow Viewer</h3><main id="page-container"></main></body>',
-  //template: '<body><h3>NetFlow Viewer</h3><div data-hook="page-container"></div></body>',
   template: templates.body,
   autoRender: true,
   events: {
@@ -25,7 +22,6 @@ module.exports = View.extend ({
     //this.pages = new ViewSwitcher (this.$('[role=page-container]'));
     this.pages = new ViewSwitcher (this.queryByHook ('page-container'));
     
-    //drawCircle (150, 50, 40);
     console.log ('In main.render');
   },
   handleNewPage: function (page) {
@@ -42,25 +38,3 @@ module.exports = View.extend ({
     }
   }
 });
-
-function drawCircle (x, y, r) {
-  var myVis = d3.select ('#chart')
-    .append ("svg")
-    .attr ("width", 400)
-    .attr ("height", 400);
-
-  myVis.append ("circle")
-    .style ("stroke", "gray")
-    .style ("fill", "white")
-    .attr ("r", r)
-    .attr ("cx", x)
-    .attr ("cy", y)
-    .on("mouseover", function () {
-      d3.select (this).style ("fill", "aliceblue");
-    })
-    .on("mouseout", function () {
-      d3.select (this).style ("fill", "white");
-    });
-    
-  return myVis;
-}

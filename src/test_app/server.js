@@ -9,7 +9,7 @@ var fs = require ('fs');
 //var data = JSON.parse(fs.readFileSync('data/fullnetflow.json', 'utf8'));
 var data = JSON.parse(fs.readFileSync('data/netflow_new.json', 'utf8'));
 //var extdata = JSON.parse(fs.readFileSync('data/fullnetflow_extended.json', 'utf8'));
-//var mapdata = JSON.parse(fs.readFileSync('data/mapdata.json', 'utf8'));
+var mapdata = JSON.parse(fs.readFileSync('data/mapdata.json', 'utf8'));
 console.log('Finished reading in and parsing the data.');
 
 /*

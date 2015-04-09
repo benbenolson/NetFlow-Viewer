@@ -4,7 +4,7 @@ var d3 = require ('d3');
 var templates = require ('../templates');
 
 module.exports = View.extend({
-  template: templates.pages.map2,
+  //template: templates.pages.map2,
   events: {
 //    "click [data-hook=btn]": "remove"
   },
@@ -14,23 +14,38 @@ module.exports = View.extend({
   },
   
   render: function() {
-    this.renderWithTemplate(this);
+    //this.renderWithTemplate(this);
     //map.plot(this, this.collection);
     //return this;
     console.log ('In map-view.render');
-    drawCircle (150, 50, 40);
+    drawCircle (200, 200, 50);
+    /*
+    d3.select ('#mapholder')
+      .append ("svg")
+      .attr ("width", 400)
+      .attr ("height", 400)
+      .append ("circle")
+      .style ("stroke", "gray")
+      .style ("fill", "white")
+      .attr ("r", 10)
+      .attr ("cx", 300)
+      .attr ("cy", 200);
+    */
   },
   
 });
 
 function drawCircle (x, y, r) {
   console.log ('In map-view.drawCircle');
-  var myVis = d3.select (".map_container")
+  //var myVis = d3.select (".mapholder")
+  var myVis = d3.select (this.el)
     .append ("svg")
     .attr ("width", 400)
-    .attr ("height", 400);
-
-  myVis.append ("circle")
+    .attr ("height", 400)
+    .attr ("display", "block")
+    .attr ("margin-left", "auto")
+    .attr ("margin-right", "auto")
+    .append ("circle")
     .style ("stroke", "gray")
     .style ("fill", "white")
     .attr ("r", r)
@@ -42,6 +57,5 @@ function drawCircle (x, y, r) {
     .on("mouseout", function () {
       d3.select (this).style ("fill", "white");
     });
-    
   return myVis;
 }

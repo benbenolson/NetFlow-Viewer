@@ -1,0 +1,24 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bar-chart {
+  margin: 20px 0;
+}
+.bar-chart > div {
+  background: #144A7C;
+  color: #f1f1f1;
+  padding: 0 4px;
+  line-height: 100%;
+  display: table;
+  margin-bottom: 2px
+}
+.bar-chart > div > span {
+  display: table-cell;
+  vertical-align: middle;
+}

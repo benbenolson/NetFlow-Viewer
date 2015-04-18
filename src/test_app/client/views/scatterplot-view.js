@@ -10,7 +10,7 @@ module.exports = View.extend({
   },
 
   render: function() {
-    this.renderWithTemplate(this);
+    //this.renderWithTemplate(this);
     plot(this, this.collection);
     return this;
   },

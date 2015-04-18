@@ -7,7 +7,7 @@ module.exports = View.extend ({
   //autoRender: true,
   render: function () {
     this.renderWithTemplate (this);
-    console.log ('In map.render');
+    console.log ('In scatterplot.render');
     var myMapview = new mapview ();
     myMapview.render ();
   }

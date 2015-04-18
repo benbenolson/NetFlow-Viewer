@@ -1,7 +1,7 @@
 var Model = require ('ampersand-model');
-var colection = require ('ampersand-rest-collection');
+var Collection = require ('ampersand-rest-collection');
 
-var model = Model.extend ({
+var data_model = Model.extend ({
   props: {
     "TimeSeconds": "number",
     "parsedDate": "string",
@@ -23,6 +23,14 @@ var model = Model.extend ({
     "firstSeenDestPacketCount": "number",
     "recordForcedut": "string",
     "srcIpCountry": "string",
-    "srcIpCountry": "string"
+    "dstIpCountry": "string"
+  }
+});
+
+// Our collection of DataPoints
+module.exports = Collection.extend({
+  model: data_model,
+  url: function() {
+    return '/mapdata';
   }
 });

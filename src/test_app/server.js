@@ -39,7 +39,7 @@ var moonConfig = {
       console.log ('In server.beforeBuildJS');
       if (config.isDev) {
         console.log ('config.isDev == true');
-        templatizer (__dirname + '/templates', __dirname + '/client/templates.js');
+        templatizer (__dirname + '/client/templates', __dirname + '/client/templates.js');
         console.log ('templatizer done');
         //done ();
       }
@@ -69,6 +69,14 @@ server.register ({
     }
   });
 
+  server.route ({
+    method: 'GET',
+    path: '/mapdata',
+    handler: function (request, reply) {
+      reply (mapdata);
+    }
+  });
+  
   server.start ();
   console.log ('app is running at 8080');
 });

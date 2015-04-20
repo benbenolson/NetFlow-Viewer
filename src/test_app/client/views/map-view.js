@@ -6,9 +6,9 @@ var domready = require ('domready');
 var rendered = false;
 
 module.exports = View.extend({
-//  events: {
-//    "click [data-hook=btn]": "remove"
-//  },
+  events: {
+    'click [data-hook=renderButton]': 'plot2'
+  },
 
   initialize: function() {
     console.log ('In map-view.initialize');
@@ -26,7 +26,6 @@ module.exports = View.extend({
     }
   },
   plot: function(data) {
-		//console.log (data);
     console.log ('In map-view.plot');
     var countries = new Object();
     var txt = "";
@@ -35,7 +34,6 @@ module.exports = View.extend({
 		//console.log (data.models);
 		
     data.models.forEach (function (d)
-		//data.forEach (function (d)
     {
       txt = d.srcIpCountry;
       if (countries.hasOwnProperty (txt))
@@ -51,9 +49,9 @@ module.exports = View.extend({
     console.log ('In map-view.plot - done counting');
 		console.log (countries);
 
-    //d3.select (".container").selectAll('path').style('fill', function(d)
+    d3.select (".container").selectAll('path').style('fill', function(d)
 		//d3.select (document.body).selectAll('path').append('fill', function(d)
-		d3.selectAll('path').attr('fill', function(d)
+		//d3.selectAll('path').style('fill', function(d)
     {
       count = countries [this.id];
       txt = count.toString (16);
@@ -79,6 +77,10 @@ module.exports = View.extend({
       }
     });
     console.log ('In map-view.plot - done setting colors');
+  },
+  plot2: function() {
+    console.log ('In map-view.plot2');
+    d3.selectAll('path').style('fill', "#ff8200");
   }
 });
 
@@ -88,9 +90,6 @@ function drawCircle (x, y, r) {
     .append ("svg")
     .attr ("width", 400)
     .attr ("height", 400)
-    .attr ("display", "block")
-    .attr ("margin-left", "auto")
-    .attr ("margin-right", "auto")
     .append ("circle")
     .style ("stroke", "gray")
     .style ("fill", "white")
